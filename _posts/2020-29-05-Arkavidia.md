@@ -785,7 +785,7 @@ sns.scatterplot(data=df_train,x='price',y='member_duration_days',hue='is_cross_s
 
 
 
-![png](images/sour-soup_files/sour-soup_24_1.png)
+![png]({{ site.url }}{{ site.baseurl }}/images/sour-soup_files/sour-soup_24_1.png)
 
 
 Dapat dilihat dari *scatter plot* diatas, persebaran dari harga dan durasi member terhadap *cross sell* menyebar sehingga harga dan durasi member tidak cukup untuk menentukan apakah suatu transaksi terjadi *cross sell* atau tidak. 
@@ -803,7 +803,7 @@ sns.countplot(data=df_train,x='is_tx_promo',hue='is_cross_sell')
 
 
 
-![png](images/sour-soup_files/sour-soup_26_1.png)
+![png]({{ site.url }}{{ site.baseurl }}/images/sour-soup_files/sour-soup_26_1.png)
 
 
 Dari *bar plot* diatas dapat disimpulkan bahwa baik ada promo maupun tidak, transaksi tanpa *cross sell* banyak terjadi dengan lebih dari 45000 transaksi.  
@@ -821,7 +821,7 @@ sns.countplot(data=df_train,x='no_of_seats',hue='is_cross_sell')
 
 
 
-![png](images/sour-soup_files/sour-soup_28_1.png)
+![png]({{ site.url }}{{ site.baseurl }}/images/sour-soup_files/sour-soup_28_1.png)
 
 
 Dapat dilihat bahwa pelanggan yang membeli lebih dari 5 tiket dalam sekali order hampir tidak pernah memesan hotel, asumsi kami bahwa pelanggan yang memesan lebih dari 5 tiket adalah keluarga yang mudik atau berkunjung ke rumah sanak saudara.
@@ -839,7 +839,7 @@ sns.countplot(data=df_train,x='trip',hue='is_cross_sell')
 
 
 
-![png](images/sour-soup_files/sour-soup_30_1.png)
+![png]({{ site.url }}{{ site.baseurl }}/images/sour-soup_files/sour-soup_30_1.png)
 
 
 Pada fitur `trip`, lebih banyak bernilai `trip` yang melakukan transaksi *cross sell*. kami menganggap nilai `roundtrip` dan `round` merupakan nilai yang sama, karena memiliki definisi yang cukup mirip dan banyak nilai `round` yang terlalu sedikit.
@@ -868,7 +868,7 @@ sns.countplot(data=df_train,x='visited_city',hue='is_cross_sell',orient='v')
 
 
 
-![png](images/sour-soup_files/sour-soup_32_2.png)
+![png]({{ site.url }}{{ site.baseurl }}/images/sour-soup_files/sour-soup_32_2.png)
 
 
 Pelanggan yang pernah mengunjungi `('Jakarta', 'Medan', 'Bali')` paling banyak melakukan transaksi *cross sell* maupun tidak.
@@ -886,7 +886,7 @@ sns.countplot(data=df_train,x='service_class',hue='is_cross_sell',orient='v')
 
 
 
-![png](images/sour-soup_files/sour-soup_34_1.png)
+![png]({{ site.url }}{{ site.baseurl }}/images/sour-soup_files/sour-soup_34_1.png)
 
 
 Pada fitur `service_class` jauh lebih banyak row yang bernilai `economy` daripada `businesss` sehingga kami rasa fitur ini tidak layak untuk dianalisa lebih lanjut.
@@ -1041,7 +1041,7 @@ sns.scatterplot(data=df_train,x='price',y='count_user_id',hue='is_cross_sell')
 
 
 
-![png](images/sour-soup_files/sour-soup_57_1.png)
+![png]({{ site.url }}{{ site.baseurl }}/images/sour-soup_files/sour-soup_57_1.png)
 
 
 *Scatter plot* diatas memperlihatkan banyaknya transaksi dan harga penerbangan serta apakah terjadi *cross sell* atau tidak.
