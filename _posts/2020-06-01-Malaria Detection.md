@@ -62,7 +62,7 @@ First, we have to import all libraries that we need like the optimizer and all t
 I won't explain them, because it will need a whole page to explaining each one of them so maybe another time or you can click the link to learn more. For now, let's focus on implementation.
 
 
-```
+```python
 ## Helper
 import os
 import random
@@ -92,7 +92,7 @@ If you already prepared colab based on the article before then you can just use 
 then just paste it into one of the code cell but add '!' before the comman so that Colab know it is a command line not a python code, and because the downloaded data is zipped the we need to unzip it you can use python library called `zipfile` but I prefer to use the command line.
 
 
-```
+```python
 ## Get the dataset Ready ##
 
 # Install Kaggle and make directory for kaggle
@@ -123,12 +123,12 @@ then just paste it into one of the code cell but add '!' before the comman so th
 > there also a duplicate *cell_images* directory so let's remove it
 
 
-```
+```python
 shutil.rmtree('/content/data/cell_images/cell_images')
 ```
 
 
-```
+```python
 parasitized_dir = '/content/data/cell_images/Parasitized/'
 uninfected_dir = '/content/data/cell_images/Uninfected/'
 parasitized_dir_test = '/content/data/test/Parasitized/'
@@ -139,7 +139,7 @@ os.makedirs(uninfected_dir_test)
 ```
 
 
-```
+```python
 def split_test(test_size=0.2):
   classes = ['P','U']
   parasitized_files = os.listdir(parasitized_dir)
@@ -184,7 +184,7 @@ split_test()
 
 
 
-```
+```python
 train_datagen = ImageDataGenerator(rescale=1/255,
                                    horizontal_flip=True,
                                    zoom_range=0.2,
@@ -240,7 +240,7 @@ You also can see if the augmentation still make sense if not you can change it.
 
 
 
-```
+```python
 CLASS_NAMES = ['Parasitized','Uninfected']
 def show_batch(image_batch, label_batch):
   plt.figure(figsize=(10,10))
@@ -287,7 +287,7 @@ You can see that it's not hard to see the different with just our own eyes, so h
 
 
 
-```
+```python
 tf.keras.backend.clear_session()
 model = tf.keras.models.Sequential([
     # 1st convolution
@@ -324,7 +324,7 @@ model.compile(optimizer=RMSprop(lr=1e-3), loss='binary_crossentropy', metrics=['
 
 
 
-```
+```python
 ## Callbacks
 os.makedirs('/content/checkpoint/',exist_ok=True)
 checkpoint_filepath = '/content/checkpoint/' ##
@@ -365,7 +365,7 @@ history = model.fit(train_generator,
 
 
 
-```
+```python
 acc = history.history['accuracy']
 val_acc = history.history['val_accuracy']
 loss = history.history['loss']
@@ -421,7 +421,7 @@ plt.show()
 
 
 
-```
+```python
 model.evaluate(test_generator)
 ```
 
@@ -445,13 +445,13 @@ We got 0.89 accuracy on the test data, I think it's already good enough given we
 
 
 
-```
+```python
 image_batch, label_batch = next(test_generator)
 preds = model.predict(image_batch)>0.5
 ```
 
 
-```
+```python
 plt.figure(figsize=(15,15))
 for i in range(32):
   ax = plt.subplot(8,4,i+1)
