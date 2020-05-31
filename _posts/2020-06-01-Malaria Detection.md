@@ -114,13 +114,13 @@ then just paste it into one of the code cell but add '!' before the comman so th
     100% 675M/675M [00:15<00:00, 44.7MB/s]
     
 
->After running code above the you should see a new directory called *data* on colab files if not try click refresh button.
+After running code above the you should see a new directory called *data* on colab files if not try click refresh button.
 
->If you inspect the *data* directory then you can see that there's subdirectory called *cell_images* and if you open it you can see that it's already divided based on class Parasitized and Uninfected so we can use tensorflow ImageDataGenerator to automatically load the image and label it based on the name of the subdirectory in a given directory.
+If you inspect the *data* directory then you can see that there's subdirectory called *cell_images* and if you open it you can see that it's already divided based on class Parasitized and Uninfected so we can use tensorflow ImageDataGenerator to automatically load the image and label it based on the name of the subdirectory in a given directory.
 
-> But there are no directory for test data so let's make a new directory and take some iamge for test data 
+But there are no directory for test data so let's make a new directory and take some iamge for test data 
 
-> there also a duplicate *cell_images* directory so let's remove it
+there also a duplicate *cell_images* directory so let's remove it
 
 
 ```python
@@ -164,19 +164,19 @@ def split_test(test_size=0.2):
 split_test()
 ```
 
-> The sub-directory should be gone by now and there is new subdirectory name *test*.
+The sub-directory should be gone by now and there is new subdirectory name *test*.
 
 ### Load The Image and Augmentation
 
 #### Load Image
->We'll now use `flow_from_dataframe` method from [ImageDataGenerator](https://keras.io/api/preprocessing/image/) to load the image and feed it into our model by giving it metadata dataframe and specify the column for image name and label also the directory of all image.
+We'll now use `flow_from_dataframe` method from [ImageDataGenerator](https://keras.io/api/preprocessing/image/) to load the image and feed it into our model by giving it metadata dataframe and specify the column for image name and label also the directory of all image.
 
 #### Augmenting
-> While we load each of the image we will create the transformed version of the image. 
+While we load each of the image we will create the transformed version of the image. 
 
-> Transforms include a range of operations from the field of image manipulation, such as shifts, flips, zooms, and much more. But, because because it's a medical image and image of a blood smear I think the variation is not big so we will just zoom, flip it horizontally and vertically.
+Transforms include a range of operations from the field of image manipulation, such as shifts, flips, zooms, and much more. But, because because it's a medical image and image of a blood smear I think the variation is not big so we will just zoom, flip it horizontally and vertically.
 
-> The intent is to expand the training dataset with new, plausible examples.
+The intent is to expand the training dataset with new, plausible examples.
 
 
 ---
@@ -267,16 +267,16 @@ You can see that it's not hard to see the different with just our own eyes, so h
 
 ### Building the model
 
-> It's a good practice for building a deep learning model is to first search a paper that try to solve similar problem and apply their architecture to your own problem.
+It's a good practice for building a deep learning model is to first search a paper that try to solve similar problem and apply their architecture to your own problem.
 
-> So, I will use the architecture from this [paper](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5907772/) where they use CNN to detect malaria, you can click on the link if you want to read more about it, below are the architectur.
+So, I will use the architecture from this [paper](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5907772/) where they use CNN to detect malaria, you can click on the link if you want to read more about it, below are the architectur.
 
 #### The Architectue
 ![alt text](https://drive.google.com/uc?export=view&id=1kgOOsnKHELAdCEKSvXZCNwWQPo7mCKZ4)
 
-> Here we gonna use the same architecture but for the regulazitation we will use `BatchNormalization` instead of `Dropout`. Given on this [article](https://www.kdnuggets.com/2018/09/dropout-convolutional-networks.html) by Harrison Jansma said that it's better to use `BatchNormalization` on convolutional network than `Dropout`.
+Here we gonna use the same architecture but for the regulazitation we will use `BatchNormalization` instead of `Dropout`. Given on this [article](https://www.kdnuggets.com/2018/09/dropout-convolutional-networks.html) by Harrison Jansma said that it's better to use `BatchNormalization` on convolutional network than `Dropout`.
 
-> if you confuse on how to read the architecture below are a little description:
+if you confuse on how to read the architecture below are a little description:
 
 - Convolution 3 \* 3 \* 3@32: Convolution layer with kernel $3*3$ and $32$ Filters
 - Max-pooling 2 \* 2 / 2: max pooling layer with $2*2$ pooling window and 2 pixel strides
@@ -316,7 +316,7 @@ model.compile(optimizer=RMSprop(lr=1e-3), loss='binary_crossentropy', metrics=['
 
 ### Training the model
 
-> We will train the model with 10 epoch but I also add callbacks to save our model everytime our validation accuracy increase and early stop if our validation loss is not decreasing for 3 epoch.
+We will train the model with 10 epoch but I also add callbacks to save our model everytime our validation accuracy increase and early stop if our validation loss is not decreasing for 3 epoch.
 
 
 ---
@@ -356,9 +356,9 @@ history = model.fit(train_generator,
     483/483 [==============================] - 77s 159ms/step - loss: 0.1704 - accuracy: 0.9469 - val_loss: 0.2915 - val_accuracy: 0.8981
     
 
-> See, our training end at 5 epoch instead of 10 because the validation is not decreasing from epoch 2,
+See, our training end at 5 epoch instead of 10 because the validation is not decreasing from epoch 2,
 
->Let's plot how our accuracy and loss progress over epochs
+Let's plot how our accuracy and loss progress over epochs
 
 
 ---
@@ -408,13 +408,13 @@ plt.show()
     <Figure size 432x288 with 0 Axes>
 
 
-> We can see the training loss and accuracy is consistently decreasing while the validation is a little spiky but we can say that for sure given our training is ended prematurely with only 5 epoch.
+We can see the training loss and accuracy is consistently decreasing while the validation is a little spiky but we can say that for sure given our training is ended prematurely with only 5 epoch.
 
-> You can try change the patience on `EarlyEpoch` to bigger value and see how the validation loss and accuracy goes for a longer period. 
+You can try change the patience on `EarlyEpoch` to bigger value and see how the validation loss and accuracy goes for a longer period. 
 
 ### Evaluate using test data
 
-> Here we gonna evalute the model using test data that we already split before.
+Here we gonna evalute the model using test data that we already split before.
 
 ---
 
@@ -438,7 +438,7 @@ model.evaluate(test_generator)
 We got 0.89 accuracy on the test data, I think it's already good enough given we only train it with 5 epoch, try train for more epoch and see whether it actually increade the accuracy!
 
 ### Sanity Check
-> Even if I know the accuracy already good, I still want to inspect our model prediction in each picture and see the different between the image our model got right and the image our model got wrong.
+Even if I know the accuracy already good, I still want to inspect our model prediction in each picture and see the different between the image our model got right and the image our model got wrong.
 
 
 ---
