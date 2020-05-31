@@ -8,9 +8,6 @@ excerpt: Deep Learning, Data Science, Image Data, Tensorflow
 mathjax: "true"
 ---
 
-
-# Malaria Detection based on Blood Smear image with CNN and Tensorflow
-
 Hello guys, welcome to my first article, so I recently finished a great course called Tensorflow In Practice by Deeplearning.ai on coursera that teaches how to use Tensorflow to build deep learning models. 
 
 So, in this article, I'd like to share about how I build a malaria detection model using Tensorflow from the preparation into prediction. 
