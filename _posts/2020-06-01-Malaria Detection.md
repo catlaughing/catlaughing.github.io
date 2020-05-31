@@ -266,7 +266,7 @@ You can see that it's not hard to see the different with just our own eyes, so h
 
 It's a good practice for building a deep learning model is to first search a paper that try to solve similar problem and apply their architecture to your own problem.
 
-So, I will use the architecture from this [paper](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5907772/) where they use CNN to detect malaria, you can click on the link if you want to read more about it, below are the architectur.
+So, I will use the architecture from this [paper](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5907772/) where they use CNN to detect malaria, you can click on the link if you want to read more about it, below are the architecture.
 
 #### The Architectue
 ![alt text](https://drive.google.com/uc?export=view&id=1kgOOsnKHELAdCEKSvXZCNwWQPo7mCKZ4)
@@ -275,10 +275,10 @@ Here we gonna use the same architecture but for the regulazitation we will use `
 
 if you confuse on how to read the architecture below are a little description:
 
-- Convolution 3 \* 3 \* 3@32: Convolution layer with kernel $3*3$ and $32$ Filters
-- Max-pooling 2 \* 2 / 2: max pooling layer with $2*2$ pooling window and 2 pixel strides
+- Convolution 3 \* 3 \* 3@32: Convolution layer with kernel 3*3 and 32 Filters
+- Max-pooling 2 \* 2 / 2: max pooling layer with 2*2 pooling window and 2 pixel strides
 - ReLU : Regular ReLU activation
-- Fully Connected 1 \* 1 \* 64@64: Dense layer with  64 neurons 
+- Fully Connected 1 \* 1 \* 64@64: Dense layer with 64 neurons 
 
 ---
 
